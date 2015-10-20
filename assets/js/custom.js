@@ -179,4 +179,8 @@ $(document).ready(function(){
     loadProject('mcrew');
   });
 
+  $('#ramps').on('click', function(){
+    loadProject('ramps');
+  });
+
 });
