@@ -162,24 +162,38 @@ $(document).ready(function(){
     });
   }
 
+  function trackProjectClick(project) {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Projects',
+      eventAction: 'click',
+      eventLabel: project
+    });
+  }
+
   // Project click handlers
   $('#nom').on('click', function(){
+    trackProjectClick('nom');
     loadProject('nom');
   });
 
   $('#nitelife').on('click', function(){
+    trackProjectClick('nitelife');
     loadProject('nitelife');
   });
 
   $('#hsrTool').on('click', function(){
+    trackProjectClick('hsrtool');
     loadProject('hsrTool');
   });
 
   $('#mcrew').on('click', function(){
+    trackProjectClick('mcrew');
     loadProject('mcrew');
   });
 
   $('#ramps').on('click', function(){
+    trackProjectClick('ramps');
     loadProject('ramps');
   });
 
