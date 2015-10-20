@@ -175,4 +175,8 @@ $(document).ready(function(){
     loadProject('hsrTool');
   });
 
+  $('#mcrew').on('click', function(){
+    loadProject('mcrew');
+  });
+
 });
