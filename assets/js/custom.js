@@ -80,11 +80,13 @@ $(document).ready(function(){
           // hp.children().removeClass('live-section');
           hp.children().hide();
           h.css('background-size', 'auto');
-          h.css('background-color', '#ffffff');
+          h.css('background-color', '#131414');
         } else {
           hh.hide();
-          h.css('background-size', '0 0');
-          h.css('background-color', '#ffffff');
+          h.css({
+            'background-size': '0 0',
+            'background-color': '#fafafa'
+          });
         }
       }
     });
