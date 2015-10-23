@@ -21,9 +21,22 @@ section#connect, section.live-section {
   padding: 4em 0 0 0;
 }
 
+.image.fit.thumb, .image img, .image:before {
+  border-radius: 0px !important;
+}
+
+.work-item {
+  margin: 0 0 4em 0;
+}
+
+#header {
+  display: none;
+}
+
 /*Update CSS rules for projects page. Every rule should start with .projects*/
-.projects#main {
-  /*padding-top: 2em;*/
+
+.projects section {
+  padding-top: 5.5em;
 }
 
 .projects p.special {
@@ -37,10 +50,6 @@ section#connect, section.live-section {
   max-width: 600px;
 }
 
-.projects#header {
-  /*padding-top: 2em;*/
-}
-
 .work-item .thumb {
   max-height: 250px;
   overflow: hidden;
@@ -48,6 +57,25 @@ section#connect, section.live-section {
 }
 
 /*end overrides*/
+
+#my-name {
+  border-top: 5px solid #131414;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #131414;
+  display: inline-block;
+  margin: 1em 0 0 0;
+  padding: 0.5em 0 0 0;
+}
+
+#nav-links {
+  padding: 3.25em 0;
+  text-align: right;
+}
+
+#nav-links a {
+  margin-left: 0.65em;
+}
 
 .process-image {
   margin: 5em 0 1em 0;
@@ -91,5 +119,14 @@ section#connect, section.live-section {
 @media screen and (max-width: 736px) {
   #main.projects {
     padding: 2.25em 1.5em;
+  }
+
+  #my-name, #nav-links, #home-one {
+    text-align: center;
+    /*display: block;*/
+  }
+
+  #nav-links {
+    padding: 0 0 1em 0;
   }
 }

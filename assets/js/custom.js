@@ -3,8 +3,8 @@ $(document).ready(function(){
   var h = $('#header'),
   hh = $('#header-home'),
   hp = $('#header-project'),
-  f = $('#footer'),
-  m = $('#main'),
+  c = $('#connect'),
+  m = $('.main'),
   live = $('.live-section'),
   h1 = $('#home-one'),
   h2 = $('#home-two'),
@@ -77,32 +77,27 @@ $(document).ready(function(){
       queue: false,
       complete: function(){
         if (home) {
+          h.hide();
           // hp.children().removeClass('live-section');
           hp.children().hide();
           h.css('background-size', 'auto');
-          h.css('background-color', '#131414');
+          // h.css('background-color', '#131414');
+          c.attr("class", "live-section 8u$ -2u 10u(small) -1u(small) 10u(xsmall) -1u(xsmall)");
         } else {
           hh.hide();
+          h.show();
           h.css({
             'background-size': '0 0',
             'background-color': '#fafafa'
           });
+          c.attr("class", "live-section 7u$ -4u 10u(medium) -1u(medium) 10u(small) -1u(small) 10u(xsmall) -1u(xsmall)");
         }
-      }
-    });
-
-    f.animate(checkWidthAndChangeProperties(f, 1), {
-      duration:aDuration,
-      queue: false,
-      complete: function(){
-        home ? f.show() : f.hide();
       }
     });
   }
 
   function showHeader(home){
-    home ? hh.show() : hp.show();
-    home ? f.show() : f.hide();
+    hp.show();
     // Hide, load and show.
     h.animate(checkWidthAndChangeProperties(h, 0), {
       duration:aDuration,
@@ -112,13 +107,6 @@ $(document).ready(function(){
         // if (!home) {
           m.fadeIn(aDuration)
         // }
-      }
-    });
-
-    f.animate(checkWidthAndChangeProperties(f, 0), {
-      duration:aDuration,
-      queue: false,
-      complete: function(){
       }
     });
   }
