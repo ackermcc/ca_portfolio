@@ -26,7 +26,7 @@ section#connect, section.live-section {
 }
 
 .work-item {
-  margin: 0 0 4em 0;
+
 }
 
 #header {
@@ -106,6 +106,31 @@ section#connect, section.live-section {
 
 .project-headers h1, h2, h3, h4, h5, h6 {
     color: #787878 !important;
+}
+
+/*Homepage project styling*/
+
+.h-project-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #131414;
+  margin-bottom: 0.25em;
+}
+
+.h-project-description {
+  color: #131414;
+  font-size: 1em;
+  margin-bottom: 0.85em;
+}
+
+.h-project-attributes {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #efefef;
+  font-size: 0.8em;
+}
+
+.h-project-attributes span {
+  margin-left: 20px;
 }
 
 /*Media queries*/
