@@ -32,25 +32,36 @@ $(document).ready(function(){
 
   function bindProjectPageActions(){
     // Wire up dismiss button click
-    dismissView();
-  }
-
-  function dismissView() {
     var d = headers.find('.dismiss-project');
     d.on('click', function(){
-      hideHeader(true);
-      //Fade out Main
-      m.fadeOut(aDuration, function(){
-        //Hide project content
-        hideSections();
-        h1.addClass('live-section');
-        h2.addClass('live-section');
-        //Return to view
-        m.removeClass('projects');
-        h.removeClass('projects');
-        m.scrollTop(0);
-        showHeader(true);
-      })
+      dismissView();
+    });
+  }
+
+  function dismissView(onload) {
+    hideHeader(true);
+    //Fade out Main
+    m.fadeOut(aDuration, function(){
+      //Hide project content
+      hideSections();
+      h1.addClass('live-section');
+      h2.addClass('live-section');
+
+      //Update history
+      //If onLoad, do not go back!
+      console.log(window.history.state);
+      if (!onload) {
+        window.history.back();
+      }
+
+      //Track project click
+      trackProjectClick('home');
+
+      //Return to view
+      m.removeClass('projects');
+      h.removeClass('projects');
+      m.scrollTop(0);
+      showHeader(true);
     });
   }
 
@@ -126,23 +137,16 @@ $(document).ready(function(){
       //Hide the home content
       hideSections();
 
+      //Show new content
       $('#' + project + '-content').addClass('live-section');
       $('#' + project + '-header').show();
 
-      // switch (project) {
-      //   case 'nom':
-      //   console.log($('#' + project + '-content'));
-      //   $('#' + project + '-content').addClass('live-section');
-      //   $('#' + project + '-header').show();
-      //     break;
-      //   case 'nitelife':
-      //     console.log($('#' + project + '-content'));
-      //     $('#' + project + '-content').addClass('live-section');
-      //     $('#' + project + '-header').show();
-      //     break;
-      //   default:
-      //     console.log('go home!');
-      // }
+      //Update history and set onload state to false to avoid the browser going back on load
+      window.history.pushState({onload: false}, null, 'assets/views/' + project + '.html');
+      console.log(window.history.state);
+
+      //Track project click
+      trackProjectClick(project);
 
       //Add projects class for any styling overrides. Remove later on disiss.
       m.addClass('projects');
@@ -150,6 +154,9 @@ $(document).ready(function(){
       m.scrollTop(0);
       showHeader(false);
     });
+
+    //Bind the dismiss action
+    bindProjectPageActions();
   }
 
   function trackProjectClick(project) {
@@ -161,29 +168,41 @@ $(document).ready(function(){
     });
   }
 
+  //Set the stage for history
+  window.history.replaceState({ onload: true }, null, '');
+
+  // Revert to a previously saved state
+  window.addEventListener('popstate', function(event) {
+    console.log(window.history.state);
+    console.log('popstate fired!' + event.state.onload);
+    if (event.state.onload) {
+      dismissView(event.state.onload);
+    }
+  });
+
   // Project click handlers
-  $('#nom').on('click', function(){
-    trackProjectClick('nom');
+  $('#nom').on('click', function(e){
+    e.preventDefault();
     loadProject('nom');
   });
 
-  $('#nitelife').on('click', function(){
-    trackProjectClick('nitelife');
+  $('#nitelife').on('click', function(e){
+    e.preventDefault();
     loadProject('nitelife');
   });
 
-  $('#hsrTool').on('click', function(){
-    trackProjectClick('hsrtool');
+  $('#hsrTool').on('click', function(e){
+    e.preventDefault();
     loadProject('hsrTool');
   });
 
-  $('#mcrew').on('click', function(){
-    trackProjectClick('mcrew');
+  $('#mcrew').on('click', function(e){
+    e.preventDefault();
     loadProject('mcrew');
   });
 
-  $('#ramps').on('click', function(){
-    trackProjectClick('ramps');
+  $('#ramps').on('click', function(e){
+    e.preventDefault();
     loadProject('ramps');
   });
 

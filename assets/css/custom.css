@@ -98,6 +98,11 @@ section#connect, section.live-section {
   margin: 0 10% 4em 10%;
 }
 
+header#header.projects {
+  background: #fafafa;
+  display: block;
+}
+
 .project-headers {
   display: none;
   text-align: left;
