@@ -206,4 +206,9 @@ $(document).ready(function(){
     loadProject('ramps');
   });
 
+  $('#shutterstock').on('click', function(e){
+    e.preventDefault();
+    loadProject('shutterstock');
+  });
+
 });
