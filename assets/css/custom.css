@@ -25,12 +25,20 @@ section#connect, section.live-section {
   border-radius: 0px !important;
 }
 
-.work-item {
-
+header p {
+  color: #131414;
 }
 
 #header {
   display: none;
+}
+
+b, .projects {
+  color: #131414 !important;
+}
+
+b {
+  font-weight: bold;
 }
 
 /*Update CSS rules for projects page. Every rule should start with .projects*/
@@ -94,6 +102,7 @@ section#connect, section.live-section {
   text-align: center;
   font-style: italic;
   font-size: 0.8em;
+  color: #757575;
   line-height: 1.3em;
   margin: 1em 10% 4em 10%;
 }
@@ -106,7 +115,7 @@ header#header.projects {
 .project-headers {
   display: none;
   text-align: left;
-  color: #a2a2a2 !important;
+  /*color: #a2a2a2 !important;*/
 }
 
 .project-headers h1, h2, h3, h4, h5, h6 {
