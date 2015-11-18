@@ -21,9 +21,30 @@ section#connect, section.live-section {
   padding: 4em 0 0 0;
 }
 
+.image.fit.thumb, .image img, .image:before {
+  border-radius: 0px !important;
+}
+
+header p {
+  color: #131414;
+}
+
+#header {
+  display: none;
+}
+
+b, .projects {
+  color: #131414 !important;
+}
+
+b {
+  font-weight: bold;
+}
+
 /*Update CSS rules for projects page. Every rule should start with .projects*/
-.projects#main {
-  /*padding-top: 2em;*/
+
+.projects section {
+  padding-top: 5.5em;
 }
 
 .projects p.special {
@@ -37,10 +58,6 @@ section#connect, section.live-section {
   max-width: 600px;
 }
 
-.projects#header {
-  /*padding-top: 2em;*/
-}
-
 .work-item .thumb {
   max-height: 250px;
   overflow: hidden;
@@ -48,6 +65,25 @@ section#connect, section.live-section {
 }
 
 /*end overrides*/
+
+#my-name {
+  border-top: 5px solid #131414;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #131414;
+  display: inline-block;
+  margin: 1em 0 0 0;
+  padding: 0.5em 0 0 0;
+}
+
+#nav-links {
+  padding: 3.25em 0;
+  text-align: right;
+}
+
+#nav-links a {
+  margin-left: 0.65em;
+}
 
 .process-image {
   margin: 5em 0 1em 0;
@@ -66,18 +102,49 @@ section#connect, section.live-section {
   text-align: center;
   font-style: italic;
   font-size: 0.8em;
+  color: #757575;
   line-height: 1.3em;
-  margin: 0 10% 4em 10%;
+  margin: 1em 10% 4em 10%;
+}
+
+header#header.projects {
+  background: #fafafa;
+  display: block;
 }
 
 .project-headers {
   display: none;
   text-align: left;
-  color: #a2a2a2 !important;
+  /*color: #a2a2a2 !important;*/
 }
 
 .project-headers h1, h2, h3, h4, h5, h6 {
     color: #787878 !important;
+}
+
+/*Homepage project styling*/
+
+.h-project-title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #131414;
+  margin-bottom: 0.25em;
+}
+
+.h-project-description {
+  color: #131414;
+  font-size: 1em;
+  margin-bottom: 0.85em;
+}
+
+.h-project-attributes {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #efefef;
+  font-size: 0.8em;
+}
+
+.h-project-attributes span {
+  margin-left: 20px;
 }
 
 /*Media queries*/
@@ -91,5 +158,14 @@ section#connect, section.live-section {
 @media screen and (max-width: 736px) {
   #main.projects {
     padding: 2.25em 1.5em;
+  }
+
+  #my-name, #nav-links, #home-one {
+    text-align: center;
+    /*display: block;*/
+  }
+
+  #nav-links {
+    padding: 0 0 1em 0;
   }
 }

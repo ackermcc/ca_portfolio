@@ -3,8 +3,8 @@ $(document).ready(function(){
   var h = $('#header'),
   hh = $('#header-home'),
   hp = $('#header-project'),
-  f = $('#footer'),
-  m = $('#main'),
+  c = $('#connect'),
+  m = $('.main'),
   live = $('.live-section'),
   h1 = $('#home-one'),
   h2 = $('#home-two'),
@@ -32,25 +32,36 @@ $(document).ready(function(){
 
   function bindProjectPageActions(){
     // Wire up dismiss button click
-    dismissView();
-  }
-
-  function dismissView() {
     var d = headers.find('.dismiss-project');
     d.on('click', function(){
-      hideHeader(true);
-      //Fade out Main
-      m.fadeOut(aDuration, function(){
-        //Hide project content
-        hideSections();
-        h1.addClass('live-section');
-        h2.addClass('live-section');
-        //Return to view
-        m.removeClass('projects');
-        h.removeClass('projects');
-        m.scrollTop(0);
-        showHeader(true);
-      })
+      dismissView();
+    });
+  }
+
+  function dismissView(onload) {
+    hideHeader(true);
+    //Fade out Main
+    m.fadeOut(aDuration, function(){
+      //Hide project content
+      hideSections();
+      h1.addClass('live-section');
+      h2.addClass('live-section');
+
+      //Update history
+      //If onLoad, do not go back!
+      console.log(window.history.state);
+      if (!onload) {
+        window.history.back();
+      }
+
+      //Track project click
+      trackProjectClick('home');
+
+      //Return to view
+      m.removeClass('projects');
+      h.removeClass('projects');
+      m.scrollTop(0);
+      showHeader(true);
     });
   }
 
@@ -77,30 +88,27 @@ $(document).ready(function(){
       queue: false,
       complete: function(){
         if (home) {
+          h.hide();
           // hp.children().removeClass('live-section');
           hp.children().hide();
           h.css('background-size', 'auto');
-          h.css('background-color', '#ffffff');
+          // h.css('background-color', '#131414');
+          c.attr("class", "live-section 8u$ -2u 10u(small) -1u(small) 10u(xsmall) -1u(xsmall)");
         } else {
           hh.hide();
-          h.css('background-size', '0 0');
-          h.css('background-color', '#ffffff');
+          h.show();
+          h.css({
+            'background-size': '0 0',
+            'background-color': '#fafafa'
+          });
+          c.attr("class", "live-section 7u$ -4u 10u(medium) -1u(medium) 10u(small) -1u(small) 10u(xsmall) -1u(xsmall)");
         }
-      }
-    });
-
-    f.animate(checkWidthAndChangeProperties(f, 1), {
-      duration:aDuration,
-      queue: false,
-      complete: function(){
-        home ? f.show() : f.hide();
       }
     });
   }
 
   function showHeader(home){
-    home ? hh.show() : hp.show();
-    home ? f.show() : f.hide();
+    hp.show();
     // Hide, load and show.
     h.animate(checkWidthAndChangeProperties(h, 0), {
       duration:aDuration,
@@ -110,13 +118,6 @@ $(document).ready(function(){
         // if (!home) {
           m.fadeIn(aDuration)
         // }
-      }
-    });
-
-    f.animate(checkWidthAndChangeProperties(f, 0), {
-      duration:aDuration,
-      queue: false,
-      complete: function(){
       }
     });
   }
@@ -136,23 +137,16 @@ $(document).ready(function(){
       //Hide the home content
       hideSections();
 
+      //Show new content
       $('#' + project + '-content').addClass('live-section');
       $('#' + project + '-header').show();
 
-      // switch (project) {
-      //   case 'nom':
-      //   console.log($('#' + project + '-content'));
-      //   $('#' + project + '-content').addClass('live-section');
-      //   $('#' + project + '-header').show();
-      //     break;
-      //   case 'nitelife':
-      //     console.log($('#' + project + '-content'));
-      //     $('#' + project + '-content').addClass('live-section');
-      //     $('#' + project + '-header').show();
-      //     break;
-      //   default:
-      //     console.log('go home!');
-      // }
+      //Update history and set onload state to false to avoid the browser going back on load
+      window.history.pushState({onload: false}, null, 'assets/views/' + project + '.html');
+      console.log(window.history.state);
+
+      //Track project click
+      trackProjectClick(project);
 
       //Add projects class for any styling overrides. Remove later on disiss.
       m.addClass('projects');
@@ -160,19 +154,61 @@ $(document).ready(function(){
       m.scrollTop(0);
       showHeader(false);
     });
+
+    //Bind the dismiss action
+    bindProjectPageActions();
   }
 
+  function trackProjectClick(project) {
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Projects',
+      eventAction: 'click',
+      eventLabel: project
+    });
+  }
+
+  //Set the stage for history
+  window.history.replaceState({ onload: true }, null, '');
+
+  // Revert to a previously saved state
+  window.addEventListener('popstate', function(event) {
+    console.log(window.history.state);
+    console.log('popstate fired!' + event.state.onload);
+    if (event.state.onload) {
+      dismissView(event.state.onload);
+    }
+  });
+
   // Project click handlers
-  $('#nom').on('click', function(){
+  $('#nom').on('click', function(e){
+    e.preventDefault();
     loadProject('nom');
   });
 
-  $('#nitelife').on('click', function(){
+  $('#nitelife').on('click', function(e){
+    e.preventDefault();
     loadProject('nitelife');
   });
 
-  $('#hsrTool').on('click', function(){
+  $('#hsrTool').on('click', function(e){
+    e.preventDefault();
     loadProject('hsrTool');
+  });
+
+  $('#mcrew').on('click', function(e){
+    e.preventDefault();
+    loadProject('mcrew');
+  });
+
+  $('#ramps').on('click', function(e){
+    e.preventDefault();
+    loadProject('ramps');
+  });
+
+  $('#shutterstock').on('click', function(e){
+    e.preventDefault();
+    loadProject('shutterstock');
   });
 
 });
