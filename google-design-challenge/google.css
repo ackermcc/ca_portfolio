@@ -1,0 +1,123 @@
+body {
+  /*font-family: 'Source Sans Pro', sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(0,0,0,0.87);
+  background: #EEEEEE;
+}
+
+a {
+  color: rgba(0,0,0,0.54);
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.secondary-type {
+  color: rgba(0,0,0,0.54);
+}
+
+/*Slides*/
+.slides-navigation {
+  font-size: 3em;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.slides-navigation a {
+  padding: 20px;
+}
+
+.slides-pagination {
+  padding: 20px;
+}
+
+.container {
+  display: table;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+}
+
+.s-content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  /*padding: 50px;
+  background: rgba(255,255,255, 0.85);*/
+}
+
+.s-content li {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.s-image {
+  width: 100%;
+  text-align: center;
+  padding-top: 56px;
+}
+
+.s-image img {
+  max-width: 70%;
+  max-height: 360px;
+}
+
+.s-images {
+  width: 100%;
+  padding-top: 56px;
+  overflow: auto;
+}
+
+.s-images img {
+  float: left;
+  max-width: 50%;
+  max-height: 360px;
+}
+
+.s-mocks {
+  width: 100%;
+  overflow: auto;
+}
+
+.s-mocks img {
+  max-width: 48%;
+  max-height: 600px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.24);
+}
+
+.s-mocks img:first-child {
+  float: left;
+  margin-right: 1%;
+}
+.s-mocks img:last-child {
+  float: right;;
+  margin-left: 1%;
+}
+
+.s-title {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.s-label {
+  /*font-family: 'Lora', serif;*/
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.large-copy {
+  margin-top: 20px;
+  /*font-weight: 300;*/
+  font-size: 24px;
+}
+
+.s-footer {
+  text-align: left;;
+  color: rgba(0,0,0,0.54);
+  font-size: 12px;
+  margin-top: 50px;;
+}

@@ -34,11 +34,12 @@ $(document).ready(function(){
     // Wire up dismiss button click
     var d = headers.find('.dismiss-project');
     d.on('click', function(){
-      dismissView();
+      dismissView(window.history.state);
     });
   }
 
   function dismissView(onload) {
+    console.log(onload.onload)
     hideHeader(true);
     //Fade out Main
     m.fadeOut(aDuration, function(){
@@ -49,8 +50,8 @@ $(document).ready(function(){
 
       //Update history
       //If onLoad, do not go back!
-      console.log(window.history.state);
-      if (!onload) {
+      // console.log(window.history.state);
+      if (onload.onload === false) {
         window.history.back();
       }
 
@@ -148,12 +149,13 @@ $(document).ready(function(){
       //Track project click
       trackProjectClick(project);
 
-      //Add projects class for any styling overrides. Remove later on disiss.
-      m.addClass('projects');
-      h.addClass('projects');
       m.scrollTop(0);
       showHeader(false);
     });
+
+    //Add projects class for any styling overrides. Remove later on dismiss.
+    m.addClass('projects');
+    h.addClass('projects');
 
     //Bind the dismiss action
     bindProjectPageActions();
@@ -170,10 +172,9 @@ $(document).ready(function(){
 
   //Set the stage for history
   window.history.replaceState({ onload: true }, null, '');
-
+  console.log(window.history.state);
   // Revert to a previously saved state
   window.addEventListener('popstate', function(event) {
-    console.log(window.history.state);
     console.log('popstate fired!' + event.state.onload);
     if (event.state.onload) {
       dismissView(event.state.onload);
@@ -182,33 +183,45 @@ $(document).ready(function(){
 
   // Project click handlers
   $('#nom').on('click', function(e){
-    e.preventDefault();
-    loadProject('nom');
+    // e.preventDefault();
+    // loadProject('nom');
+    trackProjectClick('nom');
   });
 
-  $('#nitelife').on('click', function(e){
-    e.preventDefault();
-    loadProject('nitelife');
+  $('#analytics').on('click', function(e){
+    // e.preventDefault();
+    // loadProject('nom');
+    trackProjectClick('analytics');
   });
+
+  // $('#nitelife').on('click', function(e){
+  //   e.preventDefault();
+  //   loadProject('nitelife');
+  trackProjectClick('nitelife');
+  // });
 
   $('#hsrTool').on('click', function(e){
-    e.preventDefault();
-    loadProject('hsrTool');
+    // e.preventDefault();
+    // loadProject('hsrTool');
+    trackProjectClick('hsrTool');
   });
 
   $('#mcrew').on('click', function(e){
-    e.preventDefault();
-    loadProject('mcrew');
+    // e.preventDefault();
+    // loadProject('mcrew');
+    trackProjectClick('mcrew');
   });
 
   $('#ramps').on('click', function(e){
-    e.preventDefault();
-    loadProject('ramps');
+    // e.preventDefault();
+    // loadProject('ramps');
+    trackProjectClick('ramps');
   });
 
   $('#shutterstock').on('click', function(e){
-    e.preventDefault();
-    loadProject('shutterstock');
+    // e.preventDefault();
+    // loadProject('shutterstock');
+    trackProjectClick('shutterstock');
   });
 
 });

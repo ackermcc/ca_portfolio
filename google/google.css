@@ -1,0 +1,65 @@
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 1.4;
+  color: #121212;
+}
+
+a {
+  color: #aaa;
+}
+
+p {
+  margin: 0;
+}
+
+/*Slides*/
+.slides-navigation {
+  font-size: 3em;
+  box-sizing: border-box;
+}
+
+.slides-navigation a {
+  padding: 20px;
+}
+
+.slides-pagination {
+  padding: 20px;
+}
+
+.container {
+  display: table;
+  width: 70%;
+  height: 100%;
+  margin: auto;
+}
+
+.s-content {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  /*padding: 50px;
+  background: rgba(255,255,255, 0.85);*/
+}
+
+.s-title {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.s-label {
+  /*font-family: 'Lora', serif;*/
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.large-copy {
+  margin-top: 20px;
+  font-size: 2em;
+}
+
+.s-footer {
+  text-align: left;;
+  color: #aaa;
+  font-size: 15px;
+  margin-top: 50px;;
+}
